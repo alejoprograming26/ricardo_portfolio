@@ -9,8 +9,8 @@ import ScrollToTop from './components/ui/ScrollToTop'
 import SectionDivider from './components/ui/SectionDivider'
 import useTheme from './hooks/useTheme'
 
-const CalorieCalculator = lazy(() => import('./components/Calculator'))
 const Transformations = lazy(() => import('./components/Transformations'))
+const FAQ = lazy(() => import('./components/FAQ'))
 const Testimonials = lazy(() => import('./components/Testimonials'))
 const Contact = lazy(() => import('./components/Contact'))
 const Footer = lazy(() => import('./components/Footer'))
@@ -39,11 +39,11 @@ export default function App() {
         <Services />
         <SectionDivider />
         <Suspense fallback={<SectionFallback />}>
-          <CalorieCalculator />
+          <Transformations />
         </Suspense>
         <SectionDivider />
         <Suspense fallback={<SectionFallback />}>
-          <Transformations />
+          <FAQ />
         </Suspense>
         <SectionDivider />
         <Suspense fallback={<SectionFallback />}>

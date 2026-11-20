@@ -37,10 +37,10 @@ export default function Testimonials() {
     <section className="relative overflow-hidden py-20 sm:py-28">
       <Reveal className="mx-auto max-w-2xl px-5 text-center">
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--forest-deep)] dark:text-[var(--lime)]">
-          Testimonios
+          Experiencias
         </p>
         <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-          Pacientes que <span className="text-gradient">confiaron y ganaron</span>
+          Historias reales, <span className="text-gradient">cambios definitivos</span>
         </h2>
       </Reveal>
 
