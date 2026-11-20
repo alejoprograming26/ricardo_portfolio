@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --paper: #ffffff;
+  --ink: #1b2a22;
+  --muted: #5b6a61;
+  --forest: #2f6b4f;
+  --forest-deep: #1f4d39;
+  --lime: #a7c957;
+  --lime-strong: #7fa84a;
+  --bg: #ffffff;
+  --bg-mesh: #f3f7f1;
+  --text: var(--ink);
+  --text-muted: var(--muted);
+  --surface: rgba(255, 255, 255, 0.8);
+  --surface-soft: rgba(243, 247, 241, 0.72);
+  --surface-border: rgba(27, 42, 34, 0.14);
+  --accent: var(--lime-strong);
+  --accent-2: var(--forest);
+  --line: rgba(27, 42, 34, 0.12);
+  --glow: rgba(127, 168, 74, 0.3);
+  --forest-6: color-mix(in srgb, var(--forest) 6%, transparent);
+  --forest-8: color-mix(in srgb, var(--forest) 8%, transparent);
+  --forest-10: color-mix(in srgb, var(--forest) 10%, transparent);
+  --forest-12: color-mix(in srgb, var(--forest) 12%, transparent);
+  --forest-20: color-mix(in srgb, var(--forest) 20%, transparent);
+  --forest-40: color-mix(in srgb, var(--forest) 40%, transparent);
+  --forest-50: color-mix(in srgb, var(--forest) 50%, transparent);
+  --lime-25: color-mix(in srgb, var(--lime-strong) 25%, transparent);
+  --lime-50: color-mix(in srgb, var(--lime) 50%, transparent);
+  --radius: 1.75rem;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+.glass,
+.glass-soft {
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+}
+
+body {
+  margin: 0;
+  font-family: 'Karla', 'Helvetica Neue', system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Custom selection */
+::selection {
+  background: var(--glow);
+  color: var(--ink);
+}
+
+/* Glass surface utility */
+@layer components {
+  .glass {
+    @apply backdrop-blur-xl shadow-xl;
+    background-color: var(--surface);
+    border: 1px solid var(--surface-border);
+    box-shadow: 0 20px 60px -30px rgba(31, 77, 57, 0.45);
+  }
+  .glass-soft {
+    @apply backdrop-blur-md;
+    background-color: var(--surface-soft);
+    border: 1px solid var(--surface-border);
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(100deg, var(--forest) 0%, var(--forest-deep) 45%, var(--lime-strong) 100%);
+  }
+}
+
+/* Dark theme */
+.dark {
+  color-scheme: dark;
+  --paper: #0f1813;
+  --ink: #efe9db;
+  --muted: #a7b3a9;
+  --forest: #5fa07c;
+  --forest-deep: #8fc29f;
+  --lime: #b5e45c;
+  --lime-strong: #a7c957;
+  --bg: #0f1813;
+  --bg-mesh: linear-gradient(160deg, #0f1813 0%, #14251c 45%, #0d1611 100%);
+  --text: var(--ink);
+  --text-muted: var(--muted);
+  --surface: rgba(30, 48, 39, 0.72);
+  --surface-soft: rgba(30, 48, 39, 0.45);
+  --surface-border: rgba(239, 233, 219, 0.16);
+  --line: rgba(239, 233, 219, 0.14);
+  --glow: rgba(181, 228, 92, 0.25);
+}
+
+.dark body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Smooth link transitions */
+a {
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Focus-visible ring for accessibility */
+:focus-visible {
+  outline: 2px solid var(--lime-strong);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+/* Smooth number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.3;
+}
+
+/* Select dropdown arrow */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237FA84A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  -webkit-appearance: none;
+  padding-right: 36px;
+}
+
+/* Botanical mesh backdrop */
+.mesh-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(46% 55% at 12% 18%, color-mix(in srgb, var(--lime) 20%, transparent), transparent 62%),
+    radial-gradient(48% 50% at 88% 78%, color-mix(in srgb, var(--forest) 20%, transparent), transparent 62%),
+    linear-gradient(160deg, var(--bg) 0%, var(--bg-mesh) 100%);
+  animation: meshShift 28s ease-in-out infinite alternate;
+}
+
+.dark .mesh-bg {
+  background:
+    radial-gradient(46% 55% at 12% 18%, rgba(181, 228, 92, 0.14), transparent 62%),
+    radial-gradient(48% 50% at 88% 78%, rgba(95, 160, 124, 0.18), transparent 62%),
+    linear-gradient(160deg, #0f1813 0%, #14251c 45%, #0d1611 100%);
+}
+
+@keyframes meshShift {
+  0% { background-position: 0% 0%, 100% 100%, 0 0; }
+  100% { background-position: 6% 10%, 92% 90%, 0 0; }
+}
+
+/* Subtle paper grain overlay */
+.noise::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Slim scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--forest) 55%, transparent);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--forest); }
